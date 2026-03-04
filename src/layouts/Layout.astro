@@ -1,0 +1,80 @@
+---
+const { title = "idktheflag" } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
+        <link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+        <link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+
+        <meta name="generator" content={Astro.generator} />
+        <title>{title}</title>
+    </head>
+    <body>
+        <slot /> </body>
+</html>
+
+<style is:global>
+    /* THE TRUE HACKER PALETTE - NO OVERRIDES ALLOWED */
+    @font-face {
+        font-family: "Atkinson";
+        src: url("/fonts/atkinson-regular.woff") format("woff");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: "Atkinson";
+        src: url("/fonts/atkinson-bold.woff") format("woff");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    :root {
+        --bg-color: #0d1117;
+        --text-main: #c9d1d9;
+        --text-heading: #ffffff;
+        --accent: #ff4b4b; /* MS Paint Red */
+        --accent-hover: #ff7676;
+    }
+
+    body {
+        font-family: "Atkinson", "Courier New", monospace;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--text-heading);
+        margin-top: 1.5em;
+        margin-bottom: 0.5em;
+    }
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+    a:hover {
+        color: var(--accent-hover);
+        text-decoration: underline;
+    }
+
+    /* Universal MS Paint Rendering Class */
+    .pixelated {
+        image-rendering: pixelated;
+    }
+</style>
+

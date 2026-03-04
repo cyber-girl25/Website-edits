@@ -1,17 +1,43 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Home | idktheflag">
+    <main class="container">
+        <header>
+            <h1>
+                <img src="/idktheflag-blank.png" alt="idktheflag logo" class="pixelated title-logo" />
+                idktheflag
+            </h1>
+            <p>System operational. Awaiting CTF write-ups.</p>
+        </header>
+    </main>
+</Layout>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+    
+    header {
+        border-bottom: 2px solid var(--accent);
+        padding-bottom: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .title-logo {
+        height: 1.2em;
+        width: auto;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    h1 {
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+    }
+</style>
