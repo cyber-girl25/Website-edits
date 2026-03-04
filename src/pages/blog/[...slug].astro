@@ -1,19 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
     const posts = await getCollection('blog');
     return posts.map(post => ({
-        params: { slug: post.slug },
+        params: { slug: post.id }, // Use post.id here
         props: { post },
     }));
 }
 
-// Extract the specific post for this URL
 const { post } = Astro.props;
-// Render the markdown into HTML
-const { Content } = await post.render();
+// ASTRO 5 RENDERING METHOD
+const { Content } = await render(post);
 ---
 
 <Layout title={`${post.data.title} | idktheflag`}>

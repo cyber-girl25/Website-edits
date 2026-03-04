@@ -12,18 +12,18 @@ const posts = (await getCollection('blog')).sort(
     <main class="container">
         <h1>Recent Exploits</h1>
         <p>A repository of our CTF write-ups, bypasses, and methodology.</p>
-        
         <ul class="post-list">
             {posts.map((post) => (
                 <li>
-                    <a href={`/blog/${post.slug}/`}>
+                    {/* Notice post.id instead of post.slug */}
+                    <a href={`/blog/${post.id}/`}>
                         <span class="date">[{post.data.pubDate.toLocaleDateString()}]</span>
                         <span class="title">{post.data.title}</span>
                     </a>
                 </li>
             ))}
         </ul>
-    </main>
+   </main>
 </Layout>
 
 <style>

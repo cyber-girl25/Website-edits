@@ -1,25 +1,15 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
-    type: 'content',
-    // Type-check frontmatter using a schema
+    // Astro 5 Explicit Glob Loader
+    loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
     schema: z.object({
         title: z.string(),
         description: z.string(),
-        // Transform string to Date object
         pubDate: z.coerce.date(),
-        updatedDate: z.coerce.date().optional(),
-        heroImage: z.string().optional(),
         author: z.string().default('idktheflag team'),
     }),
 });
 
-const docs = defineCollection({
-    type: 'content',
-    schema: z.object({
-        title: z.string(),
-        description: z.string(),
-    }),
-});
-
-export const collections = { blog, docs };
+export const collections = { blog };
