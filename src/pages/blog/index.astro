@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+// Get all posts and sort them by date (newest first)
+const posts = (await getCollection('blog')).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="Write-ups | idktheflag">
+    <main class="container">
+        <h1>Recent Exploits</h1>
+        <p>A repository of our CTF write-ups, bypasses, and methodology.</p>
+        
+        <ul class="post-list">
+            {posts.map((post) => (
+                <li>
+                    <a href={`/blog/${post.slug}/`}>
+                        <span class="date">[{post.data.pubDate.toLocaleDateString()}]</span>
+                        <span class="title">{post.data.title}</span>
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </main>
+</Layout>
+
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .post-list {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .post-list li {
+        margin-bottom: 0.8rem;
+    }
+
+    .post-list a {
+        display: flex;
+        gap: 1rem;
+        font-family: monospace;
+        font-size: 1.1em;
+    }
+
+    .date {
+        color: var(--text-main);
+    }
+
+    .title {
+        color: var(--accent);
+    }
+
+    .post-list a:hover .title {
+        text-decoration: underline;
+        color: var(--accent-hover);
+    }
+</style>
