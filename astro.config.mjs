@@ -1,11 +1,24 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import starlight from '@astrojs/starlight';
 
-// https://astro.build/config
 export default defineConfig({
-  integrations: [starlight({
-
-  })]
+  integrations: [
+    starlight({
+      title: 'idktheflag docs',
+      customCss: [
+        // We will add your Neovim/Terminal aesthetic CSS here later
+      ],
+      sidebar: [
+        {
+          label: 'CTF Writeups',
+          autogenerate: { directory: 'writeups' },
+        },
+        {
+          label: 'Infrastructure',
+          autogenerate: { directory: 'infra' },
+        }
+      ],
+    }),
+  ],
 });
