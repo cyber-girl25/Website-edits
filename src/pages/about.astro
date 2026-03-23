@@ -37,7 +37,7 @@ import Layout from '../layouts/Layout.astro';
 				<li><img src="/pfps/noat.png" alt="noatwill1024" class="roster-pfp" /><em>noatwill1024</em> — chad</li>
 			</ul>
 			<h2>kontakt us</h2>
-			<ul class="roster-list">
+			<ul class="contact-list">
 				<li><strong>(C) <i>riverxia</i></strong> — <code>(my username, riverxia) (at) (the domain you are at right now, idktheflag (period) sh)</code> (fuck u scrapers no email 4 u)</li>
 				<li><strong>(C) <i>qu1ck5h0t</i></strong> — qu1ck5h0t@idktheflag.sh</li>
 				<li><em>zemi/imattas</em> — <code>(their username, zemi) (at) (the domain you are at right now, idktheflag (period) sh)</code></li>
@@ -99,6 +99,16 @@ import Layout from '../layouts/Layout.astro';
         display: flex;
         align-items: center;
         gap: 0.6rem;
+    }
+
+    .contact-list {
+        list-style-type: square;
+        padding-left: 1.5rem;
+    }
+
+    .contact-list li {
+        margin-bottom: 0.8rem;
+        font-size: 1.1em;
     }
 
     .roster-pfp {
