@@ -24,17 +24,17 @@ import Layout from '../layouts/Layout.astro';
             
             <h2>The Roster</h2>
             <ul class="roster-list">
-				<li><strong>(C) <i>riverxia</i></strong> — legit everything lol (carry w)</li>
-				<li><strong>(C) <i>qu1ck5h0t</i></strong> — cryptography</li>
-				<li><em>zemi/immattas</em> — pwn</li>
-				<li><em>nila</em> — forensics/web/a bit of everything</li>
-				<li><em>cloud</em> - coach + gen player</li>
+				<li><img src="/pfps/riverxia.png" alt="riverxia" class="roster-pfp" /><strong>(C) <i>riverxia</i></strong> — legit everything lol (carry w)</li>
+				<li><img src="/pfps/quickshot.png" alt="qu1ck5h0t" class="roster-pfp" /><strong>(C) <i>qu1ck5h0t</i></strong> — cryptography</li>
+				<li><img src="/pfps/zemi.png" alt="zemi" class="roster-pfp" /><em>zemi/immattas</em> — pwn</li>
+				<li><img src="/pfps/nila.png" alt="nila" class="roster-pfp" /><em>nila</em> — forensics/web/a bit of everything</li>
+				<li><img src="/pfps/cloud.png" alt="cloud" class="roster-pfp" /><em>cloud</em> - coach + gen player</li>
             </ul>
 			<h2>Retired/Semi-Active</h2>
             <ul class="roster-list">
-				<li><em>Aw</em> — general</li>
-				<li><em>skillz</em> — epic coach</li>
-				<li><em>noatwill1024</em> — chad</li>
+				<li><img src="/pfps/aw.png" alt="Aw" class="roster-pfp" /><em>Aw</em> — general</li>
+				<li><img src="/pfps/skillz.png" alt="skillz" class="roster-pfp" /><em>skillz</em> — epic coach</li>
+				<li><img src="/pfps/noat.png" alt="noatwill1024" class="roster-pfp" /><em>noatwill1024</em> — chad</li>
 			</ul>
 			<h2>kontakt us</h2>
 			<ul class="roster-list">
@@ -96,5 +96,16 @@ import Layout from '../layouts/Layout.astro';
     .roster-list li {
         margin-bottom: 0.8rem;
         font-size: 1.1em;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+    }
+
+    .roster-pfp {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
     }
 </style>
