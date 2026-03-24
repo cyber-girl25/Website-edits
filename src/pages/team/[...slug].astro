@@ -1,0 +1,179 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+    const members = await getCollection('team');
+    return members.map(member => ({
+        params: { slug: member.id },
+        props: { member },
+    }));
+}
+
+const { member } = Astro.props;
+const { Content } = await render(member);
+const { name, nicknames, pfp, role, specialties, hobbies, socials, active } = member.data;
+---
+
+<Layout title={`${name} | idktheflag`}>
+    <div class="profile">
+        <div class="profile-header">
+            <img src={pfp} alt={name} class="profile-pfp" />
+            <div class="profile-identity">
+                <h1>{name}</h1>
+                {nicknames.length > 0 && (
+                    <p class="nicknames">aka {nicknames.join(', ')}</p>
+                )}
+                <span class={`role-badge ${active ? '' : 'inactive'}`}>
+                    {role}{!active && ' (retired)'}
+                </span>
+            </div>
+        </div>
+
+        <div class="profile-body">
+            <div class="profile-about">
+                <h2>> about</h2>
+                <div class="about-content">
+                    <Content />
+                </div>
+            </div>
+
+            {specialties.length > 0 && (
+                <div class="profile-section">
+                    <h2>> specialties</h2>
+                    <div class="tags">
+                        {specialties.map(s => <span class="tag">{s}</span>)}
+                    </div>
+                </div>
+            )}
+
+            {hobbies.length > 0 && (
+                <div class="profile-section">
+                    <h2>> hobbies</h2>
+                    <div class="tags">
+                        {hobbies.map(h => <span class="tag hobby">{h}</span>)}
+                    </div>
+                </div>
+            )}
+
+            {socials.length > 0 && (
+                <div class="profile-section">
+                    <h2>> socials</h2>
+                    <ul class="socials-list">
+                        {socials.map(s => (
+                            <li><a href={s.url} target="_blank">{s.name}</a></li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .profile {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid #30363d;
+    }
+
+    .profile-pfp {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--accent);
+    }
+
+    .profile-identity h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .nicknames {
+        color: #8b949e;
+        font-style: italic;
+        margin: 0.2rem 0 0.5rem;
+    }
+
+    .role-badge {
+        display: inline-block;
+        background-color: var(--accent);
+        color: var(--bg-color);
+        padding: 0.15rem 0.6rem;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.85em;
+        font-weight: bold;
+    }
+
+    .role-badge.inactive {
+        background-color: #8b949e;
+    }
+
+    .profile-body {
+        margin-top: 1.5rem;
+    }
+
+    .profile-body h2 {
+        color: var(--accent);
+        font-family: monospace;
+        font-size: 1.2em;
+        margin-bottom: 0.5rem;
+    }
+
+    .profile-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-about {
+        margin-bottom: 1.5rem;
+    }
+
+    .about-content {
+        font-size: 1.1em;
+        line-height: 1.7;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tag {
+        background-color: #161b22;
+        border: 1px solid #30363d;
+        padding: 0.25rem 0.7rem;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 0.95em;
+    }
+
+    .tag.hobby {
+        border-color: var(--accent);
+    }
+
+    .socials-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .socials-list li {
+        margin-bottom: 0.5rem;
+        font-size: 1.05em;
+    }
+
+    .socials-list a::before {
+        content: '> ';
+        color: var(--accent);
+    }
+</style>
