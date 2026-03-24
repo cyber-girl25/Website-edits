@@ -5,7 +5,9 @@ pfp: /pfps/quickshot.png
 role: Captain & Founder
 specialties: ['cryptography']
 hobbies: ['cs2']
-socials: []
+socials: 
+  - name: GitHub
+    url: https://github.com/TogiFerretFerret
 active: true
 ---
 
