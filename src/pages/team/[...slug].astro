@@ -22,7 +22,7 @@ const { name, nicknames, pfp, role, specialties, hobbies, socials, active } = me
             <div class="profile-identity">
                 <h1>{name}</h1>
                 {nicknames.length > 0 && (
-                    <p class="nicknames">aka {nicknames.join(', ')}</p>
+                    <p class="nicknames">aka {nicknames.join(', aka ')}</p>
                 )}
                 <span class={`role-badge ${active ? '' : 'inactive'}`}>
                     {role}{!active && ' (retired)'}
@@ -162,18 +162,22 @@ const { name, nicknames, pfp, role, specialties, hobbies, socials, active } = me
         border-color: var(--accent);
     }
 
-    .socials-list {
+	.socials-list {
         list-style: none;
         padding: 0;
     }
 
-    .socials-list li {
+	.socials-list li {
         margin-bottom: 0.5rem;
         font-size: 1.05em;
-    }
+	}
+
+	.socials-list a {
+		color: greenyellow;
+	}
 
     .socials-list a::before {
         content: '> ';
-        color: var(--accent);
+		color: darkgreen;
     }
 </style>

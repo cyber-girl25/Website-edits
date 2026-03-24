@@ -1,12 +1,12 @@
 ---
 name: qu1ck5h0t
-nicknames: ['quickshot']
+nicknames: ['quickshot', '*****shot']
 pfp: /pfps/quickshot.png
-role: Captain
+role: Captain & Founder
 specialties: ['cryptography']
-hobbies: []
+hobbies: ['cs2']
 socials: []
 active: true
 ---
 
-cryptography wizard
+cryptography midzard
